@@ -12,9 +12,8 @@ angular.module('app.controllers', [])
 
         $cordovaCamera.getPicture(options).then(function(videoURI) {
             console.log("videoURI",JSON.stringify(videoURI));
-            console.log("videoURI",videoURI.toURI());
-            $scope.video = videoURI.toURI();
-            window.localStorage.videoapp_video = videoURI.toURI();
+            $scope.video = JSON.stringify(videoURI);
+            window.localStorage.videoapp_video = JSON.stringify(videoURI);
         }, function(err) {
             console.log("err",JSON.stringify(err));
         });

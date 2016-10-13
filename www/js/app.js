@@ -20,7 +20,7 @@ angular.module('app', ['ionic', 'ngCordova' ,'app.controllers'])
       cordova.plugins.autoStart.enable();
       
         cordova.plugins.backgroundMode.setDefaults({ 
-            title:  'TheTitleOfYourProcess',
+            title:  'Video app running',
             text:   'Executing background tasks.'
         });
 
@@ -33,17 +33,22 @@ angular.module('app', ['ionic', 'ngCordova' ,'app.controllers'])
             // Set an interval of 3 seconds (3000 milliseconds)
             setInterval(function () {
 
-                console.log(window.batterystatus)
+                //console.log(window.batterystatus)
 
             }, 3000);
         }  
         
         window.addEventListener("batterystatus", onBatteryStatus, false);
 
-        function onBatteryStatus(status) {
+            function onBatteryStatus(status) {
             console.log("Level: " + status.level + " isPlugged: " + status.isPlugged);
-            //window.plugins.insomnia.allowSleepAgain()
-        }     
+            if (!status.isPlugged){
+                window.plugins.insomnia.allowSleepAgain();
+            }
+            else{
+                window.plugins.insomnia.keepAwake();
+            }
+        } 
         
         window.plugins.insomnia.keepAwake();
       
