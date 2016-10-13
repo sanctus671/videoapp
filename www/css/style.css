@@ -3,13 +3,18 @@ ion-content{
         text-align:center;
 }
 
-video{
-        margin: auto;
+#videoArea{
+         margin: auto;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: white;
+    background-color: white;   
+}
+
+video{
+
         min-width: 100%;
+        max-width:100%;
 }

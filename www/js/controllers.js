@@ -2,7 +2,14 @@ angular.module('app.controllers', [])
 
 .controller('VideoCtrl', function($scope, $rootScope, $cordovaCamera) {
     $scope.video = {videoURI:""};
-    $scope.video.videoURI = window.localStorage.videoapp_video ? window.localStorage.videoapp_video : "";
+    
+    
+    if (window.localStorage.videoapp_video){
+        $scope.video.videoURI = window.localStorage.videoapp_video ? window.localStorage.videoapp_video : "";
+        var v = "<video controls autoplay loop>";
+        v += "<source src='" + $scope.video.videoURI + "' type='video/mp4'>";
+        v += "</video>";        
+    }
     
     $scope.getVideoPath = function(){
           var options = {
@@ -23,6 +30,19 @@ angular.module('app.controllers', [])
         }, function(err) {
             console.log("err",JSON.stringify(err));
         });
-    }    
+    }   
+    
+    window.addEventListener("batterystatus", onBatteryStatus, false);
+
+        function onBatteryStatus(status) {
+        console.log("Level: " + status.level + " isPlugged: " + status.isPlugged);
+        if (!status.isPlugged){
+            document.querySelector("#videoArea video").pause();
+        }
+        else{
+            document.querySelector("#videoArea video").play();
+        }
+    }     
+    
     
 })
