@@ -39,6 +39,8 @@
        <gap:plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
        
        <gap:plugin name="cordova-plugin-camera" source="npm" />
+       
+       <gap:plugin platform="android" name="cordova-plugin-autostart" version="2.0.1" source="npm"/>
   
     <icon gap:platform="android" gap:qualifier="ldpi" src="resources/icon/android/ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="resources/icon/android/mdpi.png" />
