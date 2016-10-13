@@ -1,9 +1,6 @@
 <ion-view view-title='Video'>
   <ion-content scroll="false" ng-click="getVideoPath()">
-        <video controls autoplay loop>
-            <source src="{{video}}"/>
-            <!--<source src="../videos/video.mp4"/>-->
-        </video>
+        <video ng-src="{{video}}" controls autoplay loop></video>
       
   </ion-content>
 </ion-view>
