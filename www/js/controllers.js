@@ -1,7 +1,9 @@
 angular.module('app.controllers', [])
 
 .controller('VideoCtrl', function($scope, $rootScope, $cordovaCamera) {
-    $scope.video = window.localStorage.videoapp_video ? window.localStorage.videoapp_video : null;
+    $scope.video = {videoURI:""};
+    $scope.video.videoURI = window.localStorage.videoapp_video ? window.localStorage.videoapp_video : "";
+    
     $scope.getVideoPath = function(){
           var options = {
             quality: 50,
@@ -11,9 +13,13 @@ angular.module('app.controllers', [])
         };
 
         $cordovaCamera.getPicture(options).then(function(videoURI) {
-            console.log("videoURI",JSON.stringify(videoURI));
-            $scope.video = JSON.stringify(videoURI);
-            window.localStorage.videoapp_video = JSON.stringify(videoURI);
+            console.log("videoURI",videoURI);
+            $scope.video.videoURI = videoURI;
+            window.localStorage.videoapp_video = videoURI;
+            var v = "<video controls autoplay loop>";
+            v += "<source src='" + $scope.video.videoURI + "' type='video/mp4'>";
+            v += "</video>";
+            document.querySelector("#videoArea").innerHTML = v;            
         }, function(err) {
             console.log("err",JSON.stringify(err));
         });
