@@ -4,6 +4,10 @@ ion-content{
 }
 
 #videoArea{
+
+}
+
+video{
          margin: auto;
     position: absolute;
     top: 0;
@@ -11,10 +15,6 @@ ion-content{
     bottom: 0;
     right: 0;
     background-color: white;   
-}
-
-video{
-
         min-width: 100%;
         max-width:100%;
 }

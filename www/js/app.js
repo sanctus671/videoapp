@@ -44,9 +44,11 @@ angular.module('app', ['ionic', 'ngCordova' ,'app.controllers'])
             console.log("Level: " + status.level + " isPlugged: " + status.isPlugged);
             if (!status.isPlugged){
                 window.plugins.insomnia.allowSleepAgain();
+                document.querySelector("#videoArea video").pause();
             }
             else{
                 window.plugins.insomnia.keepAwake();
+                document.querySelector("#videoArea video").play();
             }
         } 
         
@@ -58,10 +60,11 @@ angular.module('app', ['ionic', 'ngCordova' ,'app.controllers'])
     }
     
     $ionicPlatform.on("resume", function(){ 
-
+        
     });    
     
     $ionicPlatform.on("pause", function(){ 
+
     });     
     
     

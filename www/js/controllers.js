@@ -37,10 +37,10 @@ angular.module('app.controllers', [])
         function onBatteryStatus(status) {
         console.log("Level: " + status.level + " isPlugged: " + status.isPlugged);
         if (!status.isPlugged){
-            document.querySelector("#videoArea video").pause();
+            if (document.querySelector("#videoArea video")){document.querySelector("#videoArea video").pause();}
         }
         else{
-            document.querySelector("#videoArea video").play();
+            if (document.querySelector("#videoArea video")){document.querySelector("#videoArea video").play();}
         }
     }     
     
