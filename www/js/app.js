@@ -41,7 +41,7 @@ angular.module('app', ['ionic', 'ngCordova' ,'app.controllers'])
         window.addEventListener("batterystatus", onBatteryStatus, false);
 
             function onBatteryStatus(status) {
-            console.log("Level: " + status.level + " isPlugged: " + status.isPlugged);
+            console.log(status);
             if (!status.isPlugged){
                 window.plugins.insomnia.allowSleepAgain();
                 document.querySelector("#videoArea video").pause();
