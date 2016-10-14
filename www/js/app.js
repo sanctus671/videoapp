@@ -46,7 +46,7 @@ angular.module('app', ['ionic', 'ngCordova' ,'app.controllers'])
                 window.plugins.insomnia.allowSleepAgain();
                 document.querySelector("#videoArea video").pause();
             }
-            else{
+            else if (status.isPlugged){
                 window.plugins.insomnia.keepAwake();
                 document.querySelector("#videoArea video").play();
             }
